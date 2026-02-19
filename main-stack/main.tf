@@ -9,5 +9,15 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "us-west-1"
+  region = var.assum_role.region
+
+    assume_role {
+      role_arn = var.assum_role.role_arn
+    }
+
+    default_tags {
+      tags = var.tags
+    
+    }
+      
 }
